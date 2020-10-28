@@ -28,7 +28,7 @@ ${data.test}
 ## Questions
 1. What is your (the creator's) github?
 ${stats.name}
-[${data.github}](${stats.url} "${data.github}")
+[${data.github}](${stats.html_url} "${data.github}")
 
 2. How do I get in contact?
 I am always available by email: ${data.email}
