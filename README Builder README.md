@@ -1,5 +1,5 @@
 
-# README Builder  [License](https://img.shields.io/badge/license-MIT License-green)
+# README Builder  [License](https://img.shields.io/badge/license-GNU AGPLv3-green)
 
 ## Description
 Every project needs a README and this node.js app will make the work simple for you! Upon execution, the app prompts the user to answer several questions for which the answers will serve as different sections of a newly created README file.
@@ -21,7 +21,7 @@ Input the information asked of you by the application and out comes a README fil
 
 
 ## Testing
-n/a
+
 
 ## Questions
 1. What is your (the creator's) github?
@@ -33,4 +33,4 @@ I am always available by email: hiuchanhk@gmail.com
 [avatar](https://avatars1.githubusercontent.com/u/69690385?v=4)
 
 ## License
-MIT License
+GNU AGPLv3
