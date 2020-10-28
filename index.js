@@ -19,15 +19,16 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'What is the name of your repo?',
-        name: 'repo',
-        default: 'ReadME-Builder',
-        validate: function(ans) {
-            if(ans.length > 1) {
-                return true
+        message: 'What is your email address?',
+        name: 'email',
+        default: 'hiuchanhk@gmail.com',
+        validate: async (ans) => {
+            let email = await ans;
+            if(email.indexOf('@') !== -1) {
+                return true;
             }else{
-                return console.log('A valid repo name is required.')
-            };
+                return console.log('A valid email is required.')
+            }
         }
     },
     {
@@ -76,31 +77,26 @@ inquirer
     .prompt(
         questions
     )
-    .then(function(responseobj){
-        console.log(responseobj)
-        const queryUrl = `https://api.github.com/users/${responseobj.github}/repos?per_page=100`;
+    .then(function(userData){
+        console.log(userData)
+        const queryUrl = `https://api.github.com/users/${userData.github}`;
 
-        axios.get(queryUrl).then(function(res) {
-            /* console.log(res.data[0]); */
-            console.log(res.data[0].owner.avatar_url)
-            responseobj.githubicon=res.data[0].owner.avatar_url;
-            console.log(responseobj);
-               return responseobj;
+        axios.get(queryUrl).then(function(results) {
+            userData.avatar = results.data.avatar_url;
+            userData.url = results.data.html_url;
+            return userData;
         })
-        .then(function(updatedresponseobj){
+        .then(function(updatedData){
             console.log("new fx")
             //here is all the data you need for the readme
-            console.log(updatedresponseobj)
-            console.log(generateMarkdown(updatedresponseobj))
+            console.log(updatedData)
+            console.log(generateMarkdown(updatedData))
         });
     })
-   
-
-// array of questions for user
-
 
 // function to write README file
 function writeToFile(fileName, data) {
+
 }
 
 // function to initialize program
