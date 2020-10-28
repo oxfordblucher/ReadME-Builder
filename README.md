@@ -1,5 +1,5 @@
 
-# README Builder  [License](<https://img.shields.io/badge/license-MIT License-green>)
+# README Builder  ![License](<https://img.shields.io/badge/license-MIT License-green>)
 
 ## Description
 Every project needs a README and this node.js app will make the work simple for you! Upon execution, the app prompts the user to answer several questions for which the answers will serve as different sections of a newly created README file.
@@ -30,7 +30,7 @@ Hiu Chan
 
 2. How do I get in contact?
 I am always available by email: hiuchanhk@gmail.com
-[avatar](https://avatars1.githubusercontent.com/u/69690385?v=4)
+![avatar](https://avatars1.githubusercontent.com/u/69690385?v=4)
 
 ## License
 MIT License
