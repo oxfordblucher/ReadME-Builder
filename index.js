@@ -1,7 +1,10 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const axios = require("axios");
+const util = require("util");
 const generateMarkdown = require("./utils/generateMarkdown.js")
+
+const writeFileAsync = util.promisify(fs.writeFile)
 
 const questions = [
     {
@@ -73,35 +76,41 @@ const questions = [
     },
 ];
 
-inquirer
-    .prompt(
-        questions
-    )
-    .then(function(userData){
-        console.log(userData)
-        const queryUrl = `https://api.github.com/users/${userData.github}`;
-
-        axios.get(queryUrl).then(function(results) {
-            userData.avatar = results.data.avatar_url;
-            userData.url = results.data.html_url;
-            return userData;
-        })
-        .then(function(updatedData){
-            console.log("new fx")
-            //here is all the data you need for the readme
-            console.log(updatedData)
-            console.log(generateMarkdown(updatedData))
-        });
-    })
-
-// function to write README file
-function writeToFile(fileName, data) {
-
+function promptUser() {
+    return inquirer
+        .prompt(
+            questions
+        )
 }
 
-// function to initialize program
-function init() {
+const api = {
+    async getUser(data) {
+    try { 
+        let response = await axios
+        .get(`https://api.github.com/users/${data.github}`);
+        return response.data;
+        } catch (err) {
+            console.log(err);
+        }
+    }
+};
 
+// function to initialize program
+async function init() {
+    try {
+        const data = await promptUser();
+        const stats = await api.getUser(data);
+        console.log(stats);
+        console.log(data);
+  
+        const markdown = generateMarkdown(data, stats);
+  
+        await writeFileAsync(`${data.title} README.md`, markdown);
+  
+        console.log("Successfully created a new README!");
+    } catch(err) {
+        console.log(err);
+    }
 }
 
 // function call to initialize program

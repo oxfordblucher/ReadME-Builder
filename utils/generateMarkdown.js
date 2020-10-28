@@ -1,5 +1,5 @@
 // function to generate markdown for README
-function generateMarkdown(data) {
+function generateMarkdown(data, stats) {
   return `
 # ${data.title}
 
@@ -27,10 +27,12 @@ ${data.test}
 
 ## Questions
 1. What is your (the creator's) github?
-[${data.github}]('${data.url}')
+${stats.name}
+[${data.github}](${stats.url} "${data.github}")
 
 2. How do I get in contact?
 I am always available by email: ${data.email}
+[avatar](${stats.avatar_url})
 `;
 }
 
