@@ -3,6 +3,7 @@
 
 ## Description
 Every project needs a README and this node.js app will make the work simple for you! Upon execution, the app prompts the user to answer several questions for which the answers will serve as different sections of a newly created README file.
+[Video of the app in action](https://drive.google.com/file/d/1OM2Dd-CsvO0KUV87x0POlKdp520K2Zwb/view)
 
 ## Table of Contents
 *[Installation](#Installation)  
