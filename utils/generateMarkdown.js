@@ -1,7 +1,7 @@
 // function to generate markdown for README
 function generateMarkdown(data, stats) {
   return `
-# ${data.title}
+# ${data.title}  [License](https://img.shields.io/badge/license-${data.license}-green)
 
 ## Description
 ${data.description}
@@ -33,6 +33,9 @@ ${stats.name}
 2. How do I get in contact?
 I am always available by email: ${data.email}
 [avatar](${stats.avatar_url})
+
+## License
+${data.license}
 `;
 }
 
